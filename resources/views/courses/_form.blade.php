@@ -20,11 +20,7 @@
         <input id="credit_units" type="number" name="credit_units" class="form-control @error('credit_units') is-invalid @enderror" value="{{ old('credit_units', $c?->credit_units ?? 3) }}" required>
         @error('credit_units')<div class="invalid-feedback">{{ $message }}</div>@enderror
     </div>
-    <div class="col-md-3">
-        <label class="form-label" for="capacity">Capacity</label>
-        <input id="capacity" type="number" name="capacity" class="form-control @error('capacity') is-invalid @enderror" value="{{ old('capacity', $c?->capacity ?? 60) }}" required>
-        @error('capacity')<div class="invalid-feedback">{{ $message }}</div>@enderror
-    </div>
+   
     <div class="col-md-6">
         <label class="form-label" for="lecturer_id">Lecturer</label>
         <select id="lecturer_id" name="lecturer_id" class="form-select @error('lecturer_id') is-invalid @enderror">

@@ -90,7 +90,6 @@ class CourseController extends Controller
             'name' => 'required|string|max:150',
             'description' => 'nullable|string|max:1000',
             'credit_units' => 'required|integer|between:1,10',
-            'capacity' => 'required|integer|between:1,500',
             'lecturer_id' => 'nullable|exists:users,id',
         ];
     }

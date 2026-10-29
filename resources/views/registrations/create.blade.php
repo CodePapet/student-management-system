@@ -21,7 +21,7 @@
                 <select id="course_id" name="course_id" class="form-select @error('course_id') is-invalid @enderror" required>
                     <option value="">Choose a course</option>
                     @foreach ($courses as $c)
-                        <option value="{{ $c->id }}" @selected(old('course_id') == $c->id)>{{ $c->code }} {{ $c->name }} ({{ $c->students_count }}/{{ $c->capacity }})</option>
+                        <option value="{{ $c->id }}" @selected(old('course_id') == $c->id)>{{ $c->code }} {{ $c->name }}</option>
                     @endforeach
                 </select>
                 @error('course_id')<div class="invalid-feedback">{{ $message }}</div>@enderror

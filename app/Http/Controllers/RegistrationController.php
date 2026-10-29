@@ -81,9 +81,7 @@ class RegistrationController extends Controller
         if (Registration::where('student_id', $student->id)->where('course_id', $course->id)->exists()) {
             return "{$student->full_name} is already registered for {$course->code}.";
         }
-        if ($course->students()->count() >= $course->capacity) {
-            return "{$course->code} is full ({$course->capacity} students).";
-        }
+       
 
         Registration::create([
             'student_id' => $student->id,

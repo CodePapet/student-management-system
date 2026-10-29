@@ -1,58 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Student Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel web application for managing students, courses, lecturers and course registrations at Makerere University Business School.
 
-## About Laravel
+**Course:** BUC3131 Advanced Web Application Development, Coursework Two (2026/2027)
+**Group:** [group name]
+**Repository:** [GitHub repository URL]
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Authentication with three roles: Administrator, Lecturer and Student
+- Role and permission management with spatie/laravel-permission
+- Student and course CRUD with form validation
+- Course registration that blocks duplicate registrations and full courses
+- Role-based records: lecturers see only their own courses, students see only their own registrations
+- Reusable Blade layout with sidebar navigation that changes with the user's permissions
+- Success and error messages after every action
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requirements
 
-## Learning Laravel
+- PHP 8.2 or newer
+- Composer 2
+- MySQL (for example through XAMPP)
+- Git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Installation
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone [repository URL]
+cd student-management-system
+composer install
+cp .env.example .env
+php artisan key:generate
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+On Windows PowerShell, use `copy .env.example .env` instead of `cp`.
 
-## Contributing
+## Database setup
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Start MySQL (XAMPP Control Panel, then Start next to MySQL).
+2. Open http://localhost/phpmyadmin and create an empty database named `student_management`.
+3. Open `.env` and set:
 
-## Code of Conduct
+```properties
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=student_management
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. Create the tables and load the sample data:
 
-## Security Vulnerabilities
+```bash
+php artisan migrate:fresh --seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Start the application:
 
-## License
+```bash
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Open http://127.0.0.1:8000 in your browser.
+
+The seeders use `firstOrCreate`, so running `php artisan db:seed` again does not create duplicate records.
+
+## User roles
+
+| Role | What they can do |
+|---|---|
+| Administrator | Manage students, courses and registrations, and manage user access |
+| Lecturer | View assigned courses and the students registered for them |
+| Student | View available courses, register for courses, and view or drop their own registrations |
+
+### Permissions
+
+| Role | Permissions |
+|---|---|
+| admin | view, create, edit and delete students; view, create, edit and delete courses; manage registrations; manage users |
+| lecturer | view assigned courses |
+| student | view available courses; register courses; view own registrations |
+
+## Sample login credentials
+
+The password for every account is `password`.
+
+| Role | Email |
+|---|---|
+| Administrator | admin@mubs.ac.ug |
+| Lecturer | lecturer1@mubs.ac.ug |
+| Lecturer | lecturer2@mubs.ac.ug |
+| Student | student1@mubs.ac.ug to student6@mubs.ac.ug |
+
+
+## Screenshots
+
+![Login page](docs/screenshots/login.png)
+![Admin dashboard](docs/screenshots/admin-dashboard.png)
+![Students list](docs/screenshots/students.png)
+![Courses](docs/screenshots/courses.png)
+![Registrations](docs/screenshots/registrations.png)
+![Lecturer course view](docs/screenshots/lecturer-course.png)
+![Student registrations](docs/screenshots/student-registrations.png)
+
+## Team and contributions
+
+| Member | Responsibility | Branch |
+|---|---|---|
+| [name] | Database design and relationships | feature/relationships |
+| [name] | Seeders, roles and permissions | feature/seeders-roles |
+| [name] | Student management | feature/student-management |
+| [name] | Course and registration management | feature/course-registration |
+| [name] | Layout, validation and documentation | feature/layout-docs |
+
+## GitHub workflow
+
+- `main` holds stable code; `develop` is used for integration.
+- Each member works on their own feature branch and opens pull requests into `develop`.
+- Pull requests are reviewed by a teammate before merging.
+- The integrated application is tested before `develop` is merged into `main`.
+
+## Technologies
+
+Laravel, PHP, MySQL, Blade, Bootstrap 5, spatie/laravel-permission

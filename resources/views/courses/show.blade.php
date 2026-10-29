@@ -24,7 +24,7 @@
 
 @if (auth()->user()->hasAnyRole(['admin', 'lecturer']))
 <div class="panel">
-    <div class="panel-body pb-2"><h2 class="h5 mb-0">Registered students ({{ $students->count() }} of {{ $course->capacity }})</h2></div>
+    <div class="panel-body pb-2"><h2 class="h5 mb-0">Registered students {{ $students->count() }}</h2></div>
     <div class="table-responsive">
         <table class="table mb-0">
             <thead><tr><th>Number</th><th>Name</th><th>Email</th><th>Year</th><th>Registered</th></tr></thead>

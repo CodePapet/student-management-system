@@ -3,7 +3,7 @@
     <span class="brand-mark">S</span>
     <span>
         <span class="brand-name d-block">Student Management</span>
-        <span class="brand-sub">MUBS, BUC3131</span>
+     
     </span>
 </a>
 

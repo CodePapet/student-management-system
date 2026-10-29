@@ -98,7 +98,7 @@
         </main>
 
         <footer class="footer">
-            &copy; {{ date('Y') }} Makerere University Business School. Student Management System, BUC3131 Coursework Two.
+            &copy; {{ date('Y') }} Makerere University Business School. Student Management System.
         </footer>
     </div>
 </div>

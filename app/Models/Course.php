@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Course extends Model
 {
-    protected $fillable = ['code', 'name', 'description', 'credit_units', 'capacity', 'lecturer_id'];
+    protected $fillable = ['code', 'name', 'description', 'credit_units', 'lecturer_id'];
 
     /** Each course belongs to one lecturer (a user with the lecturer role). */
     public function lecturer(): BelongsTo

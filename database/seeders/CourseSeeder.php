@@ -14,19 +14,19 @@ class CourseSeeder extends Seeder
         $l2 = User::where('email', 'lecturer2@mubs.ac.ug')->value('id');
 
         $courses = [
-            ['BUC3131', 'Advanced Web Application Development', 'Building secure, database-driven web applications with Laravel.', 4, 60, $l1],
-            ['BUC3132', 'Systems Analysis and Design', 'Modelling and designing business information systems.', 3, 60, $l2],
-            ['BUC3133', 'Database Administration', 'Administering, tuning and securing relational databases.', 3, 40, $l1],
-            ['BUC3134', 'Business Intelligence', 'Turning organisational data into decisions.', 3, 40, $l2],
-            ['BUC3135', 'IT Project Management', 'Planning and delivering technology projects.', 3, 50, $l1],
+            ['BUC3131', 'Advanced Web Application Development', 'Building secure, database-driven web applications with Laravel.', 4, $l1],
+            ['BUC3132', 'Systems Analysis and Design', 'Modelling and designing business information systems.', 3, $l2],
+            ['BUC3133', 'Database Administration', 'Administering, tuning and securing relational databases.', 3,  $l1],
+            ['BUC3134', 'Business Intelligence', 'Turning organisational data into decisions.', 3, $l2],
+            ['BUC3135', 'IT Project Management', 'Planning and delivering technology projects.', 3,  $l1],
         ];
 
-        foreach ($courses as [$code, $name, $description, $credits, $capacity, $lecturer]) {
+        foreach ($courses as [$code, $name, $description, $credits, $lecturer]) {
             Course::firstOrCreate(['code' => $code], [
                 'name' => $name,
                 'description' => $description,
                 'credit_units' => $credits,
-                'capacity' => $capacity,
+        
                 'lecturer_id' => $lecturer,
             ]);
         }

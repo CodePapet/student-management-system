@@ -12,7 +12,7 @@
 <div class="panel">
     <div class="table-responsive">
         <table class="table mb-0">
-            <thead><tr><th>Code</th><th>Course</th><th>Lecturer</th><th>Credits</th><th>Seats taken</th><th></th></tr></thead>
+            <thead><tr><th>Code</th><th>Course</th><th>Lecturer</th><th>Credits</th><th></th></tr></thead>
             <tbody>
             @forelse ($courses as $c)
                 <tr>
@@ -20,7 +20,7 @@
                     <td>{{ $c->name }}</td>
                     <td>{{ $c->lecturer?->name ?? 'Not assigned' }}</td>
                     <td>{{ $c->credit_units }}</td>
-                    <td>{{ $c->students_count }} / {{ $c->capacity }}</td>
+                
                     <td class="text-end text-nowrap">
                         <a class="btn btn-sm btn-outline-secondary" href="{{ route('courses.show', $c) }}">Open</a>
                         @can('register courses')

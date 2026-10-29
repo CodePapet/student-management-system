@@ -12,7 +12,7 @@
         .split { display:grid; grid-template-columns:1.05fr 1fr; min-height:100vh; }
         .hero { background:#10213f; color:#fff; padding:3rem; display:flex; flex-direction:column; justify-content:space-between; }
         .hero h1 { font-size:2.6rem; font-weight:700; max-width:16ch; line-height:1.08; }
-        .mark { width:44px; height:44px; border-radius:12px; background:#d4a22f; color:#10213f; display:grid; place-items:center; font-weight:700; font-size:1.3rem; font-family:'Bricolage Grotesque',sans-serif; }
+        .mark { width:44px; height:44px; border-radius:12px;  display:grid; place-items:center; font-weight:700; font-size:1.3rem; font-family:'Bricolage Grotesque',sans-serif;   visibility: hidden;}
         .hero p { color:#a9b7d4; max-width:42ch; }
         .form-side { display:flex; align-items:center; justify-content:center; padding:2rem; }
         .card-login { width:100%; max-width:400px; }
@@ -26,12 +26,12 @@
 <body>
 <div class="split">
     <section class="hero">
-        <div class="mark">S</div>
+        <div class="mark"></div>
         <div>
-            <h1>Courses, students and registrations in one place.</h1>
+            <h1>Student Management System</h1>
             <p class="mt-3">Makerere University Business School. Sign in to manage records, view your courses or register for the semester.</p>
         </div>
-        <small style="color:#7f8fb0">BUC3131 Advanced Web Application Development</small>
+        <small style="color:#7f8fb0"></small>
     </section>
 
     <section class="form-side">
@@ -60,10 +60,6 @@
                 <button class="btn btn-brand w-100">Sign in</button>
             </form>
 
-            <div class="demo mt-4">
-                <strong>Demo accounts</strong> (password: <code>password</code>)<br>
-                admin@mubs.ac.ug<br>lecturer1@mubs.ac.ug<br>student1@mubs.ac.ug
-            </div>
         </div>
     </section>
 </div>
